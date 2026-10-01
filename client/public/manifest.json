@@ -1,0 +1,17 @@
+{
+  "name": "WavePlay — Your Music. Your Way.",
+  "short_name": "WavePlay",
+  "description": "Full-Featured Spotify-style Music Streaming Platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0d12",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

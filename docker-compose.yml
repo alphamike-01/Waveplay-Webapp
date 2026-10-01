@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: waveplay-mongodb
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=waveplay
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: waveplay-server
+    restart: always
+    ports:
+      - '5000:5000'
+    environment:
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongodb:27017/waveplay
+      - JWT_SECRET=waveplay-super-secure-secret-key-2025
+      - CLIENT_URL=http://localhost:5173
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: waveplay-client
+    restart: always
+    ports:
+      - '80:80'
+    depends_on:
+      - server
+
+volumes:
+  mongo-data:

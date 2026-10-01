@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0c0d12" />
+    <meta name="description" content="WavePlay - Full-featured modern music streaming web application. Your Music. Your Way." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WavePlay — Your Music. Your Way." />
+    <meta property="og:description" content="Stream legally accessible full-length music, local audio files, and user-provided URLs with high-fidelity audio controls." />
+    <meta property="og:image" content="/favicon.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WavePlay — Your Music. Your Way." />
+    <meta name="twitter:description" content="Full-featured modern music streaming web application." />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>WavePlay — Your Music. Your Way.</title>
+  </head>
+  <body class="bg-[#0c0d12] text-slate-100 antialiased selection:bg-violet-600 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.warn('ServiceWorker registration skipped:', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
